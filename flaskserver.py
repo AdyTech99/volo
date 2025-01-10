@@ -13,14 +13,27 @@ import configparser
 app = Flask(__name__)
 CORS(app)
 # Define the path to the config file
-CONFIG_FILE_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'config.ini')
+CONFIG_FILE_PATH =  'config.ini'
 # Default configuration values
 # download location: https://download.kiwix.org/zim/wikipedia/wikipedia_en_all_nopic_2024-06.zim
+import platform
+
+# Determine the operating system
+os_type = platform.system().lower()
+
+# Set the appropriate path based on the operating system
+if os_type == 'windows':
+    kiwix_tools_path = 'kiwix-tools-windows-3.7.0-2'
+elif os_type == 'linux':
+    kiwix_tools_path = 'kiwix-tools-linux-3.7.0-2'
+else:  # Default to macOS if not Windows or Linux
+    kiwix_tools_path = 'kiwix-tools-macos-arm64-3.7.0-2'
+
 DEFAULT_CONFIG = {
     'PATHS': {
-        'KIWIX_SEARCH_PATH': os.path.join(os.path.dirname(os.path.dirname(__file__)), 'kiwix_tools', 'kiwix-tools-macos-arm64-3.7.0-2', 'kiwix-search'),
-        'KIWIX_SERVE_PATH': os.path.join(os.path.dirname(os.path.dirname(__file__)), 'kiwix_tools', 'kiwix-tools-macos-arm64-3.7.0-2', 'kiwix-serve'),
-        'ZIM_FILE_PATH': os.path.join(os.path.dirname(os.path.dirname(__file__)), 'Database', 'Wikipedia', 'wikipedia_en_all_nopic_2024-06.zim')
+        'KIWIX_SEARCH_PATH': os.path.join(os.path.dirname(os.path.dirname(__file__)), 'kiwix_tools', kiwix_tools_path, 'kiwix-search'),
+        'KIWIX_SERVE_PATH': os.path.join(os.path.dirname(os.path.dirname(__file__)), 'kiwix_tools', kiwix_tools_path, 'kiwix-serve'),
+        'ZIM_FILE_PATH': os.path.join(os.path.dirname(os.path.dirname(__file__)), 'database', 'Wikipedia', 'wikipedia_en_all_nopic_2024-06.zim')
     },
     'SERVER': {
         'PORT': '1255',
