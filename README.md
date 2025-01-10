@@ -113,6 +113,7 @@ curl -X POST http://localhost:1255/v1/chat/completions \
 
 Customize Volo by editing the config.ini file:
 
+```
 [PATHS]
 kiwix_search_path = path/to/volo/kiwix_tools/kiwix-tools-macos-arm64-3.7.0-2/kiwix-search
 kiwix_serve_path = path/to/volo/kiwix_tools/kiwix-tools-macos-arm64-3.7.0-2/kiwix-serve
@@ -124,8 +125,7 @@ kiwix_serve_url = http://localhost:821
 heading_count = 64
 ai_model = qwen2.5:3b
 ollama_api_url = http://localhost:11434/api/chat
-
-
+```
 
 
 
