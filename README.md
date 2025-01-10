@@ -73,10 +73,12 @@ zim_file_path = /path/to/wikipedia_en_all_nopic_2024-06.zim
 
 ### Step 5: Start Volo (again)
 
-Run the appropriate script based on your operating system:
-	•	Windows: Double-click start.bat
-
-	•	macOS/Linux: Run ./start.sh
+On macOS/Linux, run the commands:
+```
+cd Volo
+./start.sh
+```
+On Windows, navigate to the cloned repository and double click start.bat
 
 ---
 
