@@ -6,20 +6,55 @@ body {
 
 .app {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 92vh;
   padding: 20px;
 }
 
+.header {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  max-width: 800px;
+  margin-bottom: 10px;
+}
+
+.new-tab-button, .reset-button {
+  padding: 10px 20px;
+  color: rgb(112, 112, 110);
+  background-color: rgb(251, 251, 248);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.new-tab-button {
+  right: 0px;
+  position: absolute;
+  margin-left: 10px;
+}
+
+.reset-button {
+  left: 0px;
+  position: absolute;
+  width: 12%;
+  margin-left: 1px;
+}
+
+.new-tab-button:hover, .reset-button:hover {
+  background-color: rgb(235, 235, 235);
+}
+
 .chat-container {
   width: 100%;
   max-width: 800px;
   height: 90vh;
-  /*background-color: #fff;*/
-  background-color: rgb(251, 251, 248); /* Light cream background */
+  background-color: rgb(251, 251, 248);
   border-radius: 10px;
-  /*box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);*/
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
 }
@@ -28,8 +63,7 @@ body {
   flex: 1;
   padding: 20px;
   overflow-y: auto;
-  background-color: #fff;
-  background-color: rgb(251, 251, 248); /* Light cream background */
+  background-color: rgb(251, 251, 248);
   border-radius: 10px 10px 0 0;
 }
 
@@ -46,14 +80,27 @@ body {
   margin: 0 0 20px 0;
   color: #555;
   line-height: 1.5;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
 }
 
-.fade-in-word {
+.subdued-text {
+  color: #888;
+  font-size: 0.9em;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.fade-in {
   opacity: 0;
-  animation: fadeIn 0.5s forwards;
+  animation: fadeIn 0.1s ease-in forwards;
 }
 
 @keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
   to {
     opacity: 1;
   }
@@ -69,9 +116,7 @@ body {
 .input-container {
   display: flex;
   padding: 10px;
-  /*background-color: #fff;*/
-  /*border-radius: 0 0 10px 10px;*/
-  /*border-top: 1px solid #ddd;*/
+  border-top: 1px solid #ccc;
 }
 
 .input-container input {
@@ -96,4 +141,98 @@ body {
 .input-container button:disabled {
   background-color: #ccc;
   cursor: not-allowed;
+}
+
+.tab-bar {
+  display: flex;
+  padding: 10px;
+  background-color: #f1f1f1;
+  border-bottom: 1px solid #ccc;
+  overflow-x: auto;
+}
+
+.tab {
+  padding: 10px;
+  margin-right: 5px;
+  cursor: pointer;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-bottom: none;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.tab.active {
+  background-color: #e0e0e0;
+}
+
+.close-tab {
+  margin-left: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.add-tab {
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  left: 0px;
+  background-color: #f4f4f4;
+  padding: 10px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.sidebar.closed {
+  transform: translateX(-100%);
+}
+
+.sidebar-toggle {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.new-conversation-button {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.conversation-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.conversation-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.conversation-item.active {
+  background-color: #ddd;
+}
+
+.delete-conversation-button {
+  background: none;
+  border: none;
+  cursor: pointer;
 }

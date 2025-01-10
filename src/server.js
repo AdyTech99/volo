@@ -1,44 +1,92 @@
 const express = require('express');
 const axios = require('axios');
 const cors = require('cors');
-const config = require('./config'); // Import the config file
-//import { BRAVE_API_KEY, MISTRAL_API_KEY, PORT } from '../config.js';
+const config = require('./config');
+const fs = require('fs');
+const path = require('path');
+const FlexSearch = require('flexsearch');
 
 const app = express();
-const PORT = config.PORT; // Use the PORT from config.js
+const PORT = config.PORT;
 
 app.use(cors());
 app.use(express.json());
 
-// Brave Search API
-const BRAVE_API_URL = 'https://api.search.brave.com/res/v1/web/search';
+// Initialize FlexSearch
+const index = new FlexSearch.Document({
+  document: {
+    id: 'id',
+    index: 'content'
+  }
+});
 
-// Mistral AI API
-const MISTRAL_API_URL = 'https://api.mistral.ai/v1/chat/completions';
+// Path to the database folder (in the project's root)
+const TXT_FILES_DIR = path.join(__dirname, '../database/wikipedia/WikipediaDemarkedTexts'); // Adjust the relative path as needed
+const INDEX_FILE = path.join(__dirname, '../database/search-index.json'); // Save the index in the root directory
+
+// Function to index files in batches
+const indexFilesInBatches = async (dir, batchSize = 1000) => {
+  const files = fs.readdirSync(dir);
+  let batch = [];
+  let fileCount = 0;
+
+  for (const file of files) {
+    const filePath = path.join(dir, file);
+    const content = fs.readFileSync(filePath, 'utf-8');
+    batch.push({ id: fileCount, content });
+
+    if (batch.length >= batchSize) {
+      index.add(batch); // Add the batch to the index
+      batch = []; // Reset the batch
+      console.log(`Indexed ${fileCount + 1} files...`);
+    }
+
+    fileCount++;
+  }
+
+  // Add any remaining files in the last batch
+  if (batch.length > 0) {
+    index.add(batch);
+    console.log(`Indexed ${fileCount} files...`);
+  }
+
+  // Save the index to disk
+  fs.writeFileSync(INDEX_FILE, JSON.stringify(index.export()));
+  console.log('Indexing complete. Index saved to disk.');
+};
+
+// Function to load the index from disk
+const loadIndex = () => {
+  if (fs.existsSync(INDEX_FILE)) {
+    const indexData = fs.readFileSync(INDEX_FILE, 'utf-8');
+    index.import(JSON.parse(indexData));
+    console.log('Index loaded from disk.');
+  } else {
+    console.log('Index file not found. Creating a new index...');
+    indexFilesInBatches(TXT_FILES_DIR); // Index files in batches
+  }
+};
+
+// Load the index when the server starts
+loadIndex();
 
 // Search endpoint
 app.post('/search', async (req, res) => {
   const { query, context } = req.body;
 
   try {
-     Step 1: Fetch search results from Brave
-    const braveResponse = await axios.get(BRAVE_API_URL, {
-      params: { q: query },
-      headers: { 'X-Subscription-Token': config.BRAVE_API_KEY }, // Use the BRAVE_API_KEY from config.js
-    });
-
-    const searchResults = braveResponse.data.web.results;
+    // Step 1: Search the indexed files
+    const searchResults = index.search(query, { limit: 10 }); // Adjust limit as needed
 
     // Step 2: Generate AI summary using Mistral
     const mistralResponse = await axios.post(
-      MISTRAL_API_URL,
+      config.AI_API_URL,
       {
         model: 'mistral-small',
         messages: [
-          { role: 'system', content: 'You are a helpful assistant that summarizes web articles.' },
-          ...(context || []), // Include past interactions for context
+          { role: 'system', content: 'You are a helpful assistant that summarizes search results.' },
+          ...(context || []),
           { role: 'user', content: `Summarize the following search results: ${JSON.stringify(searchResults)}` },
-          //{ role: 'user', content: `Summarize the following search results: No current search results; inform the user that the service is offline` },
         ],
         temperature: 0.48,
         stream: false,
@@ -46,7 +94,7 @@ app.post('/search', async (req, res) => {
       {
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${config.MISTRAL_API_KEY}`, // Use the MISTRAL_API_KEY from config.js
+          Authorization: `Bearer ${config.MISTRAL_API_KEY}`,
         },
       }
     );
