@@ -1,10 +1,13 @@
 # Volo: Fixing LLM Hallucinations with Wikipedia Knowledge 🚀
 
-Volo is an innovative solution designed to enhance AI capabilities with Wikipedia knowledge through an efficient **RAG (Retrieval Augmented Generation)** pipeline. It utilizes an offline database of Wikipedia powered by **Kiwix**, ensuring fast and reliable access to information without requiring constant internet connectivity.
+Volo is an AI solution designed to enhance AI capabilities with Wikipedia knowledge through an efficient **RAG (Retrieval Augmented Generation)** pipeline. It utilizes an offline database of Wikipedia created by **Kiwix**, ensuring fast and reliable access to information without requiring constant internet connectivity.
 
-Volo uses a tiny model (Qwen2.5:3b) and gives it the knowledge of nearly 7 million Wikipedia articles, making it a _more_ reliable source of information than giant closed-source models like OpenAI's GPT4o and Anthropic's Claude 3.5 Sonnet
+Volo uses a tiny model (Qwen2.5:3b) and gives it the knowledge of nearly 7 million Wikipedia articles, making it a _more_ reliable source of information than giant closed-source models like OpenAI's GPT4o and Anthropic's Claude 3.5 Sonnet, which are prone to hallucinations.
 
-By integrating with **Ollama** and supporting **OpenAI-compatible REST APIs**, Volo provides a flexible and user-friendly interface for knowledge-driven AI interactions. Whether you're building intelligent chatbots, conducting research, or just exploring Wikipedia in new ways, Volo makes it seamless and efficient.
+By integrating with **Ollama** and supporting **OpenAI-compatible REST APIs**, Volo provides a flexible and user-friendly interface for knowledge-driven AI interactions.
+
+<img width="1508" alt="Screenshot 2025-01-11 at 16 20 19" src="https://github.com/user-attachments/assets/f442f7e2-991d-40c2-8bf4-23001bd620be" />
+
 
 ---
 
@@ -90,10 +93,19 @@ On Windows, navigate to the cloned repository and double click start.bat
 
 ## 🚀 Usage
 
-### OpenAI-Compatible API Endpoints
+### Volo Web UI:
+Upon starting the server, you can visit Volo's Web UI from [http://localhost:3000](http://localhost:3000)
+
+### Open WebUI
+<img width="512" alt="Screenshot 2025-01-11 at 17 18 24" src="https://github.com/user-attachments/assets/91b3c20e-0d9a-4a0b-8d83-9085c00d677a" />
+
 
 > [!WARNING]
 Streaming must be set to __false__ in any custom interface used (like Open WebUI)
+
+Volo is compatible with Open WebUI. Simply add the API URL [http://localhost:1255/v1](http://localhost:1255/v1) to the Connections page in Admin Settings. You can leave the API key empty, or just put a random string. Ensure that `streaming` is set to **false**
+
+### OpenAI-Compatible API Endpoints
 
 Volo provides REST API endpoints compatible with OpenAI:
 
