@@ -126,6 +126,7 @@ def start_npm():
         react_app_path = os.path.join(os.path.dirname(__file__))  # Replace with your React app path
         npm_process = subprocess.Popen(
             ["npm", "start"],
+            cwd=react_app_path,
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
             shell=True  # Use shell=True for Windows compatibility
