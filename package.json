@@ -18,9 +18,13 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "start-server": "python3 flaskserver.py & python flaskserver.py & npm start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "dev:api": "python3 flaskserver.py",
+    "dev:client": "npm start",
+    "dev": "npm run dev:api && npm run dev:client"
   },
   "eslintConfig": {
     "extends": [
