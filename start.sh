@@ -7,4 +7,5 @@
 echo "Starting..."
 #python flaskserver.py &
 #python3 flaskserver.py &
+npm install react axios react-markdown remark-math rehype-katex --force
 npm run start-server
