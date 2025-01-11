@@ -23,9 +23,9 @@ os_type = platform.system().lower()
 
 # Set the appropriate path based on the operating system
 if os_type == 'windows':
-    kiwix_tools_path = 'kiwix-tools-windows-3.7.0-2'
+    kiwix_tools_path = 'kiwix-tools-win-i686-3.7.0-2'
 elif os_type == 'linux':
-    kiwix_tools_path = 'kiwix-tools-linux-3.7.0-2'
+    kiwix_tools_path = 'kiwix-tools-linux-x86_64-3.7.0-2'
 else:  # Default to macOS if not Windows or Linux
     kiwix_tools_path = 'kiwix-tools-macos-arm64-3.7.0-2'
 
