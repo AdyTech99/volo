@@ -31,9 +31,9 @@ else:  # Default to macOS if not Windows or Linux
 
 DEFAULT_CONFIG = {
     'PATHS': {
-        'KIWIX_SEARCH_PATH': os.path.join(os.path.dirname(os.path.dirname(__file__)), 'kiwix_tools', kiwix_tools_path, 'kiwix-search'),
-        'KIWIX_SERVE_PATH': os.path.join(os.path.dirname(os.path.dirname(__file__)), 'kiwix_tools', kiwix_tools_path, 'kiwix-serve'),
-        'ZIM_FILE_PATH': os.path.join(os.path.dirname(os.path.dirname(__file__)), 'database', 'Wikipedia', 'wikipedia_en_all_nopic_2024-06.zim')
+        'KIWIX_SEARCH_PATH': os.path.join(os.path.dirname(os.path.dirname(__file__)), 'volo', 'kiwix_tools', kiwix_tools_path, 'kiwix-search'),
+        'KIWIX_SERVE_PATH': os.path.join(os.path.dirname(os.path.dirname(__file__)), 'volo', 'kiwix_tools', kiwix_tools_path, 'kiwix-serve'),
+        'ZIM_FILE_PATH': os.path.join(os.path.dirname(os.path.dirname(__file__)), 'volo', 'database', 'Wikipedia', 'wikipedia_en_all_nopic_2024-06.zim')
     },
     'SERVER': {
         'PORT': '1255',
