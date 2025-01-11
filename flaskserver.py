@@ -124,7 +124,7 @@ def start_npm():
     global npm_process
     try:
         # Navigate to the directory containing the React app
-        react_app_path = os.path.join(os.path.dirname(__file__), 'react_app_directory')  # Replace with your React app path
+        react_app_path = os.path.join(os.path.dirname(__file__), 'volo')  # Replace with your React app path
         npm_process = subprocess.Popen(
             ["npm", "start"],
             cwd=react_app_path,
