@@ -1,4 +1,4 @@
-# Volo: Empower Your AI with Wikipedia Knowledge 🚀
+# Volo: Fixing LLM Hallucinations with Wikipedia Knowledge 🚀
 
 Volo is an innovative solution designed to enhance AI capabilities with Wikipedia knowledge through an efficient **RAG (Retrieval Augmented Generation)** pipeline. It utilizes an offline database of Wikipedia powered by **Kiwix**, ensuring fast and reliable access to information without requiring constant internet connectivity.
 
