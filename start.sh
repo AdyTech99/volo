@@ -5,7 +5,3 @@
 echo "Starting Flask server..."
 python flaskserver.py &
 python3 flaskserver.py &
-
-# Start the React frontend
-echo "Starting React frontend..."
-npm start

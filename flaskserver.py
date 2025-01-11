@@ -115,6 +115,47 @@ def stop_kiwix_serve():
             print("kiwix-serve process did not terminate gracefully, killing it...")
             kiwix_serve_process.kill()  # Force kill if it doesn't terminate
         print("kiwix-serve process stopped.")
+
+
+    npm_process = None
+
+def start_npm():
+    """Start the npm process for the React app."""
+    global npm_process
+    try:
+        # Navigate to the directory containing the React app
+        react_app_path = os.path.join(os.path.dirname(__file__), 'react_app_directory')  # Replace with your React app path
+        npm_process = subprocess.Popen(
+            ["npm", "start"],
+            cwd=react_app_path,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            shell=True  # Use shell=True for Windows compatibility
+        )
+        print("npm process started successfully.")
+    except Exception as e:
+        print(f"Failed to start npm: {e}")
+        raise
+
+def stop_npm():
+    """Stop the npm process."""
+    global npm_process
+    if npm_process:
+        print("Stopping npm process...")
+        npm_process.terminate()  # Send SIGTERM
+        try:
+            npm_process.wait(timeout=5)  # Wait for the process to terminate
+        except subprocess.TimeoutExpired:
+            print("npm process did not terminate gracefully, killing it...")
+            npm_process.kill()  # Force kill if it doesn't terminate
+        print("npm process stopped.")
+
+# Update atexit and signal handlers to stop npm
+atexit.register(stop_npm)
+signal.signal(signal.SIGINT, lambda signum, frame: (handle_signal(signum, frame), stop_npm()))
+signal.signal(signal.SIGTERM, lambda signum, frame: (handle_signal(signum, frame), stop_npm()))
+
+
 # Register the stop_kiwix_serve function to run on app exit
 atexit.register(stop_kiwix_serve)
 # Handle termination signals (e.g., Ctrl+C)
@@ -419,9 +460,14 @@ def chat_completions():
             }
         }), 500
 # Start the server
+
 if __name__ == "__main__":
     try:
+        # Start the Flask server and React app
+        start_kiwix_serve()
+        start_npm()
         app.run(port=PORT, debug=True)
     finally:
-        # Ensure kiwix-serve is stopped when the app exits
+        # Ensure processes are stopped when the app exits
         stop_kiwix_serve()
+        stop_npm()
