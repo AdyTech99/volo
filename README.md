@@ -61,7 +61,6 @@ Install the required Python packages using pip:
 ### Step 3: Start the server:
 On macOS/Linux, run the commands:
 ```
-cd Volo
 ./start.sh
 ```
 On Windows, navigate to the cloned repository and double click start.bat
@@ -80,7 +79,7 @@ zim_file_path = /path/to/wikipedia_en_all_nopic_2024-06.zim
 
 On macOS/Linux, run the commands:
 ```
-cd Volo
+cd volo
 ./start.sh
 ```
 On Windows, navigate to the cloned repository and double click start.bat
