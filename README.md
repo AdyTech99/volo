@@ -1,10 +1,10 @@
 # Volo: Fixing LLM Hallucinations with Wikipedia Knowledge 🚀
 
-Volo is an innovative solution designed to enhance AI capabilities with Wikipedia knowledge through an efficient **RAG (Retrieval Augmented Generation)** pipeline. It utilizes an offline database of Wikipedia powered by **Kiwix**, ensuring fast and reliable access to information without requiring constant internet connectivity.
+Volo is an AI solution designed to enhance AI capabilities with Wikipedia knowledge through an efficient **RAG (Retrieval Augmented Generation)** pipeline. It utilizes an offline database of Wikipedia created by **Kiwix**, ensuring fast and reliable access to information without requiring constant internet connectivity.
 
-Volo uses a tiny model (Qwen2.5:3b) and gives it the knowledge of nearly 7 million Wikipedia articles, making it a _more_ reliable source of information than giant closed-source models like OpenAI's GPT4o and Anthropic's Claude 3.5 Sonnet
+Volo uses a tiny model (Qwen2.5:3b) and gives it the knowledge of nearly 7 million Wikipedia articles, making it a _more_ reliable source of information than giant closed-source models like OpenAI's GPT4o and Anthropic's Claude 3.5 Sonnet, which are prone to hallucinations.
 
-By integrating with **Ollama** and supporting **OpenAI-compatible REST APIs**, Volo provides a flexible and user-friendly interface for knowledge-driven AI interactions. Whether you're building intelligent chatbots, conducting research, or just exploring Wikipedia in new ways, Volo makes it seamless and efficient.
+By integrating with **Ollama** and supporting **OpenAI-compatible REST APIs**, Volo provides a flexible and user-friendly interface for knowledge-driven AI interactions.
 
 ---
 
