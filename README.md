@@ -65,6 +65,8 @@ On macOS/Linux, run the commands:
 ```
 On Windows, navigate to the cloned repository and double click start.bat
 
+Once, the server runs, press CTRL+C to stop it.
+
 ### Step 4: Configure Volo
 **Set Up config.ini:** Open the newly-generated config.ini file and specify the path to the .zim file downloaded from Kiwix:
 
