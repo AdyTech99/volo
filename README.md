@@ -13,7 +13,7 @@ By integrating with **Ollama** and supporting **OpenAI-compatible REST APIs**, V
 - **RAG Workflow**: Combines retrieval of factual data from Wikipedia with advanced AI generative capabilities.
 - **Integration with Ollama**: Supports Ollama models like `qwen2.5:3b` for superior natural language processing.
 - **Configurable Settings**: Fully customizable via `config.ini`.
-- **OpenAI-Compatible REST APIs**: Use Volo with interfaces like Open WebUI or your own API client.
+- **OpenAI-Compatible REST APIs**: Use Volo with interfaces like [Open WebUI](https://openwebui.com) or your own API client.
 - **Cross-Platform Support**: Compatible with Windows, macOS, and Linux.
 
 ---
