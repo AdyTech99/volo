@@ -6,6 +6,9 @@ Volo uses a tiny model (Qwen2.5:3b) and gives it the knowledge of nearly 7 milli
 
 By integrating with **Ollama** and supporting **OpenAI-compatible REST APIs**, Volo provides a flexible and user-friendly interface for knowledge-driven AI interactions.
 
+<img width="1508" alt="Screenshot 2025-01-11 at 16 20 19" src="https://github.com/user-attachments/assets/f442f7e2-991d-40c2-8bf4-23001bd620be" />
+
+
 ---
 
 ## ✨ Features
