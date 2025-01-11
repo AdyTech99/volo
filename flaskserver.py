@@ -83,6 +83,7 @@ OLLAMA_API_URL = config['SERVER']['OLLAMA_API_URL']
 API_KEY = 'support-for-custom-api-providers-is-currently-unavailable'
 # Global variable to store the kiwix-serve process
 kiwix_serve_process = None
+npm_process = None
 # Define headers to be used in API calls
 API_HEADERS = {
     'Content-Type': 'application/json',
@@ -109,15 +110,13 @@ def stop_kiwix_serve():
     if kiwix_serve_process:
         print("Stopping kiwix-serve process...")
         kiwix_serve_process.terminate()  # Send SIGTERM
+        kiwix_serve_process.kill()  # Force kill if it doesn't terminate
         try:
             kiwix_serve_process.wait(timeout=5)  # Wait for the process to terminate
         except subprocess.TimeoutExpired:
             print("kiwix-serve process did not terminate gracefully, killing it...")
             kiwix_serve_process.kill()  # Force kill if it doesn't terminate
         print("kiwix-serve process stopped.")
-
-
-npm_process = None
 
 def start_npm():
     """Start the npm process for the React app."""
@@ -127,7 +126,6 @@ def start_npm():
         react_app_path = os.path.join(os.path.dirname(__file__))  # Replace with your React app path
         npm_process = subprocess.Popen(
             ["npm", "start"],
-            cwd=react_app_path,
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
             shell=True  # Use shell=True for Windows compatibility
