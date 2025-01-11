@@ -183,10 +183,7 @@ def select_best_heading(query, headings):
         response.raise_for_status()
         selected_heading = response.json()["message"]["content"].strip()
         print(f"Selected heading: {selected_heading}")
-        if selected_heading in headings:
-            return selected_heading
-        else:
-            return None
+        return selected_heading
     except Exception as e:
         print(f"Error selecting best heading: {e}")
         return None
@@ -284,7 +281,7 @@ def search():
                 # Step 4: Fetch the article content for the best heading
                 article_content = fetch_article_content(best_heading)
                 if article_content is None:
-                    return jsonify({"message": "Failed to fetch article content for the selected heading."})
+                    return "Failed to fetch article content for the selected heading. This can happen if the ZIM file path is incorrect or (more rarely) if the AI made a mistake in selecting the heading."
                 updated_context = context + [
                     {"role": "user", "content": query},
                     {"role": "assistant", "content": f"Search results: {article_content}"}
