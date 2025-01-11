@@ -117,7 +117,7 @@ def stop_kiwix_serve():
         print("kiwix-serve process stopped.")
 
 
-    npm_process = None
+npm_process = None
 
 def start_npm():
     """Start the npm process for the React app."""
