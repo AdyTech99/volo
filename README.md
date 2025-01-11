@@ -93,10 +93,19 @@ On Windows, navigate to the cloned repository and double click start.bat
 
 ## 🚀 Usage
 
-### OpenAI-Compatible API Endpoints
+### Volo Web UI:
+Upon starting the server, you can visit Volo's Web UI from [http://localhost:3000](http://localhost:3000)
+
+### Open WebUI
+<img width="512" alt="Screenshot 2025-01-11 at 17 18 24" src="https://github.com/user-attachments/assets/91b3c20e-0d9a-4a0b-8d83-9085c00d677a" />
+
 
 > [!WARNING]
 Streaming must be set to __false__ in any custom interface used (like Open WebUI)
+
+Volo is compatible with Open WebUI. Simply add the API URL [http://localhost:1255/v1](http://localhost:1255/v1) to the Connections page in Admin Settings. You can leave the API key empty, or just put a random string. Ensure that `streaming` is set to **false**
+
+### OpenAI-Compatible API Endpoints
 
 Volo provides REST API endpoints compatible with OpenAI:
 
