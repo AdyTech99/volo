@@ -2,7 +2,7 @@
 
 Volo is an innovative solution designed to enhance AI capabilities with Wikipedia knowledge through an efficient **RAG (Retrieval Augmented Generation)** pipeline. It utilizes an offline database of Wikipedia powered by **Kiwix**, ensuring fast and reliable access to information without requiring constant internet connectivity.
 
-Volo uses a tiny model (Qwen2.5:3b) and gives it the knowledge of nearly 7 million Wikipedia articles, making it a more reliable source of information than giant closed-source models like OpenAI's GPT4o and Anthropic's Claude 3.5 Sonnet
+Volo uses a tiny model (Qwen2.5:3b) and gives it the knowledge of nearly 7 million Wikipedia articles, making it a _more_ reliable source of information than giant closed-source models like OpenAI's GPT4o and Anthropic's Claude 3.5 Sonnet
 
 By integrating with **Ollama** and supporting **OpenAI-compatible REST APIs**, Volo provides a flexible and user-friendly interface for knowledge-driven AI interactions. Whether you're building intelligent chatbots, conducting research, or just exploring Wikipedia in new ways, Volo makes it seamless and efficient.
 
@@ -18,13 +18,18 @@ By integrating with **Ollama** and supporting **OpenAI-compatible REST APIs**, V
 
 ---
 
+## Minimum System Requirements
+- 3 GB VRAM (most discrete GPUs should be enough)
+- 60 GB of disk space
+- A fast GPU
+
 ## 📦 Prerequisites
 Before installing Volo, ensure you have the following installed:
-1. **Python 3.8 or later**  
+1. **Python 3.10 or later**  
    - Download: [https://www.python.org/downloads/](https://www.python.org/downloads/)
    - Make sure `pip` is installed and available in your PATH.
 2. **Kiwix Offline Database**  
-   - Download the `.zim` file for Wikipedia:  
+   - Download the `.zim` file for Wikipedia (~55 GB):  
      [wikipedia_en_all_nopic_2024-06.zim](https://download.kiwix.org/zim/wikipedia/wikipedia_en_all_nopic_2024-06.zim)
 3. **Ollama**  
    - Follow the [Ollama installation guide](https://github.com/ollama/ollama#ollama) to set up the environment.
